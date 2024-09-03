@@ -1,0 +1,1 @@
+This is Hello Triangle sample for NDK OpenGL

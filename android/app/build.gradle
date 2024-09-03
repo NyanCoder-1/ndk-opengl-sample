@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+	//noinspection GrDeprecatedAPIUsage
+    compileSdkVersion 35
+	ndkVersion '27.0.12077973'
+	
+	defaultConfig {
+		applicationId = 'ru.nyancoder.ndk_opengl_sample'
+		minSdkVersion 21
+		targetSdkVersion 35
+		externalNativeBuild {
+			cmake {
+				arguments "-DANDROID_STL=c++_static"
+			}
+		}
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'),
+				'proguard-rules.pro'
+		}
+	}
+	externalNativeBuild {
+		cmake {
+			version "3.30.2"
+			path "../../CMakeLists.txt"
+		}
+	}
+	namespace 'ru.nyancoder.ndk_opengl_sample'
+}
+
+dependencies {
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
